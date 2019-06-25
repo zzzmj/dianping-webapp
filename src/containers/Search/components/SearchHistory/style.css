@@ -1,0 +1,37 @@
+.searchHistory {
+    background-color: #fff;
+    font-size: 15px;
+    color: #323232;
+    margin-top: 1px;
+}
+
+.searchHistory__header {
+    background-color: #f0f0f0;
+    padding: 8px 15px;
+    color: #999;
+}
+
+.searchHistory__list {
+    padding-left: 15px;
+    margin: 0;
+}
+
+.searchHistory__item {
+    display: block;
+    color: #323232;
+    height: 48px;
+    line-height: 48px;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.searchHistory__clear {
+    height: 45px;
+    line-height: 45px;
+    color: #333;
+    text-align: center;
+    font-size: 15px;
+    background-color: #fff;
+    display: block;
+    border: none;
+}

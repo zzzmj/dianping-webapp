@@ -1,0 +1,24 @@
+.popularSearch {
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+}
+
+.popularSearch::after {
+    display: block;
+    content: '';
+    height: 0;
+    clear: both;
+}
+
+.popularSearch__item {
+    float: left;
+    background-color: #fff !important;
+    color: #323232;
+    width: 33%;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}

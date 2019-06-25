@@ -1,0 +1,104 @@
+.discount {
+    border-bottom: 10px solid #f0f0f0;
+    padding: 7px 6px 10px;
+    background-color: #fff;
+}
+
+.discount__header {
+    display: block;
+    position: relative;
+    height: 32px;
+    line-height: 32px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+}
+
+.discount__title {
+    display: inline-block;
+    height: 30px;
+    width: 75px;
+    font-size: 18px;
+    color: #f63;
+    font-weight: bold;
+}
+
+.discount__more {
+    font-size: 12px;
+    float: right;
+    padding-right: 18px;
+    color: #bbb;
+}
+
+.discount__arrow {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    margin-top: -8px;
+    border: 2px solid #bbb;
+    transform: rotate(45deg);
+    width: 8px;
+    height: 8px;
+    border-bottom: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+
+.discount__content {
+    padding-bottom: 5px;
+}
+
+.discount__item {
+    display: inline-block;
+    width: 33%;
+    box-sizing: border-box;
+    padding: 0 4px;
+}
+
+.discount__itemPic {
+    height: 80px;
+}
+
+.discount__itemTitle {
+    color: #333;
+    font-size: 14px;
+    padding-top: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.discount__itemPriceWrapper {
+    line-height: 16px;
+    height: 16px;
+    font-size: 0;
+    padding-top: 5px;
+    position: relative;
+}
+
+.discount__itemCurrentPrice {
+    color: #f63;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.discount__itemCurrentPrice {
+    color: #f63;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.discount__itemCurrentPrice::before {
+    content: '\A5';
+    font-size: 14px;
+}
+
+.discount__itemOldPrice {
+    color: #999;
+    font-size: 12px;
+    margin-left: 2px;
+}
+
+.discount__itemOldPrice::before {
+    content: '\A5';
+    font-size: 14px;
+}

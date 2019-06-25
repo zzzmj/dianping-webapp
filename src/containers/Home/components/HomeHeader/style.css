@@ -1,0 +1,114 @@
+.homeHeader::after {
+    display: block;
+    height: 50px;
+    content: '';
+}
+
+.homeHeader__wrapper {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #f63;
+    color: #fff;
+    padding: 0 10px;
+    text-align: center;
+    display: -webkit-box;
+    z-index: 305;
+    box-sizing: border-box;
+}
+
+.homeHeader__city {
+    position: relative;
+    padding-right: 17px;
+    color: #fff;
+    max-width: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    text-decoration: none;
+}
+
+.homeHeader__city::after {
+    border: 1px solid #fff;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    margin-top: -8px;
+    display: block;
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
+}
+
+.homeHeader__search {
+    display: block;
+    background-color: #fff;
+    padding: 0 0 0 30px;
+    -webkit-box-flex: 1;
+    height: 30px;
+    margin: 9px 6px 9px 10px;
+    line-height: 32px;
+    color: #b8b8b8;
+    text-align: left;
+    font-size: 13px;
+    transition: left 0.2s, right 0.2s;
+    border-radius: 25px;
+    position: relative;
+}
+
+.homeHeader__search::before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 1px solid #888;
+    border-radius: 11px;
+    left: 12px;
+    bottom: 11px;
+}
+
+.homeHeader__self {
+    display: block;
+    width: 28px;
+    height: 100%;
+}
+
+.homeHeader__portrait {
+    height: 22px;
+    width: 22px;
+    border: 1px solid #fff;
+    border-radius: 17px;
+    position: relative;
+    top: 13px;
+    overflow: hidden;
+}
+
+.homeHeader__portrait::before {
+    border: 1px solid #fff;
+    position: absolute;
+    right: 6px;
+    top: 4px;
+    display: block;
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 5px;
+}
+
+.homeHeader__portrait::after {
+    border: 1px solid #fff;
+    position: absolute;
+    right: 2px;
+    top: 13px;
+    display: block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+}

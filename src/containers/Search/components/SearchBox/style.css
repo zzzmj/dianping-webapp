@@ -1,0 +1,82 @@
+.searchBox {
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.searchBox__container {
+    height: 45px;
+    color: #f63;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.searchBox__text {
+    background-color: #f0f0f0;
+    width: calc(100% - 68px);
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 30px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+}
+
+/* 选中模拟圆角边框效果 */
+.searchBox__text:focus {
+    box-shadow: 0 0 0 1px #f63;
+}
+
+.searchBox__clear {
+    background-image: url('https://www.dpfile.com/app/node-mobile-m-isomorphism-web/static/d53930bbff0bf22cb8cea72503da44d9.png');
+    background-size: 250px;
+    background-repeat: no-repeat;
+    background-position: 3px -185px;
+    width: 22px;
+    height: 34px;
+    margin-left: -25px;
+}
+
+.searchBox__cancel {
+    width: 48px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 10px;
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+}
+
+.searchBox__list {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 45px);
+    box-sizing: border-box;
+    top: 45px;
+    list-style: none;
+    padding: 0 10px 0 15px;
+    margin: 0;
+    z-index: 9999;
+    background-color: #fff;
+}
+
+.searchBox__item {
+    padding: 15px 10px 15px 0;
+    font-size: 15px;
+    line-height: 15px;
+    position: relative;
+    display: block;
+    color: #333;
+    overflow: hidden;
+}
+
+.searchBox__itemTitle {
+    float: left;
+    color: #666;
+}
+
+.searchBox__itemQuantity {
+    float: right;
+    color: #666;
+    font-size: 12px;
+}

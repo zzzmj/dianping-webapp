@@ -1,0 +1,19 @@
+.buyButton {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 9px 15px 1px #000;
+}
+.buyButton__btn {
+    display: block;
+    height: 40px;
+    color: #fff;
+    background-color: #f63;
+    margin: 10px 9px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+}
