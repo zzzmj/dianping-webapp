@@ -33,14 +33,29 @@ const initState = {
 export const actions = {
     loadProductDetail: (id) => {
         return (dispatch, getState) => {
+            // 如果产品已经获取过了，就不用再重复发送请求，使用缓存
+            const product = getProduct(getState(), id)
+            if (product) {
+                return dispatch({
+                    type: types.FETCH_PRODUCT_DETAIL_SUCCESS,
+                    id
+                })
+            }
             const endpoint = url.getProductDetail(id)
             return dispatch(fetchProductDetail(endpoint, id))
         }
     },
     loadRelatedShop: (id) => {
         return (dispatch, getState) => {
+            // 如果商家已经获取过了，就不用再重复发送请求，使用缓存
+            const relatedShop = getRelatedShop(getState(), id)
+            if (relatedShop) {
+                return dispatch({
+                    type: types.FETCH_SHOP_SUCCESS,
+                    id
+                })
+            }
             const endpoint = url.getRelatedShop(id)
-            console.log(endpoint)
             return dispatch(fetchRelatedShop(endpoint, id))
         }
     }
@@ -71,6 +86,8 @@ const fetchRelatedShop = (endpoint, id) => ({
     },
     id
 })
+
+
 
 // reducer
 const product = (state = initState.product, action) => {

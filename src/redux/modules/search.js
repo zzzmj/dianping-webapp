@@ -43,7 +43,6 @@ export const actions = {
             return dispatch(fetchPopularKeywords(endpoint))
         }
     },
-
     // 根据输入的内容获取相关关键词
     loadRelatedKeywords: (text) => {
         return (dispatch, getState) => {
@@ -51,7 +50,6 @@ export const actions = {
             return dispatch(fetchRelatedKeywords(endpoint, text))
         }
     },
-
     setInputText: text => ({
         type: types.SET_INPUT_TEXT,
         text
