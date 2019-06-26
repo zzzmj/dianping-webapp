@@ -35,7 +35,7 @@ class ProductOverview extends Component {
                     <span className="productOverview__price--old">
                         ¥{oldPrice}
                     </span>
-                    <a className="productOverview__btn">立即购买</a>
+                    <a className="productOverview__btn" href="/">立即购买</a>
                 </div>
                 <ul className="productOverview__remark">
                     <li className="productOverview__remarkItem">

@@ -1,50 +1,17 @@
 import React, { Component } from 'react'
 import './style.css'
-const data = [
-    {
-        id: 1,
-        keyword: '火锅',
-        quantity: 8710
-    },
-    {
-        id: 2,
-        keyword: '火锅自助',
-        quantity: 541
-    },
-    {
-        id: 3,
-        keyword: '火锅 三里屯',
-        quantity: 65
-    },
-    {
-        id: 4,
-        keyword: '火锅 望京',
-        quantity: 133
-    },
-    {
-        id: 5,
-        keyword: '火锅家常菜',
-        quantity: 179
-    }
-]
+
 
 class SearchBox extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            inputValue: ''
-        }
-    }
-
     render() {
-        const visiable = this.state.inputValue.length > 0 ? true : false
-
+        const { inputText } = this.props
+        const visiable = inputText.length > 0 ? true : false
         return (
             <div className="searchBox">
                 <div className="searchBox__container">
                     <input
                         className="searchBox__text"
-                        value={this.state.inputValue}
+                        value={inputText}
                         onChange={this.handleChange}
                     />
                     {visiable ? (
@@ -61,11 +28,12 @@ class SearchBox extends Component {
     }
 
     renderSuggestList() {
+        const { relatedKeywords } = this.props
         return (
             <ul className="searchBox__list">
-                {data.map((item, index) => {
+                {relatedKeywords.map(item => {
                     return (
-                        <li className="searchBox__item" key={index}>
+                        <li className="searchBox__item" key={item.id} onClick={this.handleClick.bind(this, item.id)}>
                             <span className="searchBox__itemKeyworkd">
                                 {item.keyword}
                             </span>
@@ -80,15 +48,16 @@ class SearchBox extends Component {
     }
 
     handleChange = e => {
-        this.setState({
-            inputValue: e.target.value
-        })
+        const text = e.target.value
+        this.props.onChange(text)
     }
 
     handleClear = () => {
-        this.setState({
-            inputValue: ''
-        })
+        this.props.onClear()
+    }
+
+    handleClick =  (id) => {
+        this.props.onClickKeyword(id)
     }
 
     handleCancel = () => {}

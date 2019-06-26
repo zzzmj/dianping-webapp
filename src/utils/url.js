@@ -10,5 +10,5 @@ export default {
     // 产品的id
     getRelatedShop: (id) => `http://localhost:3000/mock/shops/${id}.json`,
     getPopularKeywords: () => `http://localhost:3000/mock/keywords/popular.json`,
-    getRelatedKeywords: () => `http://localhost:3000/mock/keywords/related.json`
+    getRelatedKeywords: (text) => `http://localhost:3000/mock/keywords/related.json?keyword=${text}`
 }

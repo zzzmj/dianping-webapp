@@ -12,3 +12,28 @@ const reducer = (state = {}, action) => {
 }
 
 export default reducer
+
+export const getKeywordById = (state, id) => {
+    if (!id) return null
+
+    const keyword = state.entities.keywords[id]
+    if (keyword) {
+        return keyword
+    } else {
+        return null
+    }
+}
+
+export const getKeywordByText = (state, text) => {
+    const result = []
+    const keywords = state.entities.keywords
+    for (const id in keywords) {
+        if (keywords.hasOwnProperty(id)) {
+            const keyword = keywords[id];
+            if (keyword.includes(text)) {
+                result.push(keyword)
+            }
+        }
+    }
+    return result
+}
