@@ -62,6 +62,7 @@ class Search extends Component {
         // 1. 添加到历史记录 2. 跳转到新页面
         this.props.addHistoryKeyword(keyword)
         // TODO
+        this.props.history.push('/search_result')
     }
 
     // 清除历史记录
