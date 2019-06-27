@@ -1,0 +1,129 @@
+.orderItem {
+    background-color: #fff;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderItem__title {
+    display: flex;
+    height: 45px;
+    align-items: center;
+    color: #111;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.orderItem__main {
+    display: flex;
+    background-color: #fafafa;
+}
+
+.orderItem__imgWrapper {
+    height: 80px;
+    width: 80px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.orderItem__img {
+    height: 100%;
+    width: 100%;
+}
+
+.orderItem__tag {
+    display: inline-block;
+    padding: 0 9px;
+    height: 22px;
+    width: 62px;
+    line-height: 22px;
+    background-color: #c39c6d;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    text-align: center;
+}
+
+.orderItem__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    padding: 0 8px 0 10px;
+    min-width: 0;
+}
+
+.orderItem__line {
+    font-size: 14px;
+    line-height: 28px;
+    color: #555;
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+}
+
+.orderItem__bottom {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.orderItem__type {
+    font-size: 13px;
+    color: #999;
+    line-height: 13px;
+}
+
+.orderItem__btn {
+    display: inline-block;
+    border: 1px solid #bbb;
+    color: #555;
+    height: 27px;
+    width: 62px;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 27px;
+    margin-left: 13px;
+}
+
+.orderItem__commentContainer {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.orderItem__comment {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #f1f1f1;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.orderItem__starContainer {
+    margin-bottom: 5px;
+}
+
+.orderItem__star {
+    color: #999;
+}
+
+.orderItem__star--light {
+    color: rgb(233, 32, 61);
+}
+
+.orderItem__commentBtn {
+    display: inline-block;
+    border: 1px solid #bbb;
+    color: #555;
+    background-color: #fff;
+    height: 27px;
+    width: 62px;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+}

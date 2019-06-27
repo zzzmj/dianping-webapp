@@ -1,0 +1,82 @@
+.loginForm__inputContainer {
+    background: #fff;
+    margin-top: 16px;
+}
+
+.loginForm__row {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDg0NjJGODhFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDg0NjJGODdFOUY3MTFFMzgyNDZBNkRCNjM5MDI2MzkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjZCQ0M0ODFERjAyMTFFMzg5RDE4NENEQUZENTUzNEYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjZCQ0M0ODJERjAyMTFFMzg5RDE4NENEQUZENTUzNEYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5EbLiBAAAAGUlEQVR42mL6//8/AwizPHr06D8DEAAEGABriwmmt+2WgAAAAABJRU5ErkJggg==)
+        repeat-x 0 bottom;
+    background-size: auto 1px;
+    margin-bottom: 1px;
+    display: flex;
+}
+
+.loginForm__mobileLabel {
+    display: inline-block;
+    width: 60px;
+
+    border-right: 1px solid #e0e0e0;
+    height: 24px;
+    line-height: 24px;
+    padding: 10px 0 10px 10px;
+    font-size: 16px;
+    color: #333;
+    position: relative;
+}
+
+.loginForm__mobileLabel::after {
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border-right: 2px solid #bab5ad;
+    border-bottom: 2px solid #bab5ad;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin: 0 0 0 4px;
+    position: relative;
+    top: -3px;
+    margin-left: 8px;
+    content: '';
+}
+
+.loginForm__input {
+    border: none;
+    height: 23px;
+    flex: 1;
+    line-height: 23px;
+    padding: 10px 0 10px 10px;
+    font-size: 15px;
+    outline: 0;
+    color: #333;
+}
+
+.loginForm__passwordLabel {
+    display: inline-block;
+    width: 60px;
+    height: 24px;
+    line-height: 24px;
+    padding: 10px 0 10px 10px;
+    font-size: 16px;
+    color: #333;
+    position: relative;
+}
+
+.loginForm__btnContainer {
+    margin-top: 12px;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.loginForm__btn {
+    width: 100%;
+    line-height: 40px;
+    color: #fff;
+    text-decoration: none;
+    background: #f63;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: 6px;
+}

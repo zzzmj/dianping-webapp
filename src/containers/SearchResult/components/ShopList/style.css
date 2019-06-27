@@ -1,0 +1,39 @@
+.shopList {
+    background-color: #fff;
+}
+
+.shopList__filter {
+    padding: 10px 0;
+    font-size: 0;
+}
+
+.shopList__filterItem {
+    display: inline-block;
+    width: 33%;
+    box-sizing: border-box;
+    text-align: center;
+    color: #646464;
+    font-size: 13px;
+    overflow: hidden;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+}
+
+.shopList__filterItem::after {
+    position: absolute;
+    right: 15px;
+    margin-top: 3px;
+    border: 2px solid #bbb;
+    transform: rotate(135deg);
+    width: 6px;
+    height: 6px;
+    border-bottom: none;
+    border-left: none;
+    content: '';
+}
+
+.shopList__divider {
+    height: 0;
+    border-top: 1px solid #e1e1e1;
+}
