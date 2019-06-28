@@ -4,8 +4,16 @@ import './style.css'
 class OrderItem extends Component {
     render() {
         const {
-            data: { title, statusText, orderPicUrl, channel, text, type }
-        } = this.props
+            title,
+            statusText,
+            orderPicUrl,
+            channel,
+            text,
+            type
+        } = this.props.data
+
+        const { isCommenting, onComment } = this.props
+        console.log('text:', text)
         return (
             <div className="orderItem">
                 <div className="orderItem__title">
@@ -21,64 +29,84 @@ class OrderItem extends Component {
                         />
                     </div>
                     <div className="orderItem__content">
-                        <div className="orderItem__line">{text[0]}</div>
-                        <div className="orderItem__line">{text[1]}</div>
+                        <div className="orderItem__line">{text ? text[0] : ''}</div>
+                        <div className="orderItem__line">{text ? text[0] : ''}</div>
                     </div>
                 </div>
                 <div className="orderItem__bottom">
                     <div className="orderItem__type">{channel}</div>
                     <div>
                         {type === 1 ? (
-                            <div className="orderItem__btn">评价</div>
+                            <div className="orderItem__btn" onClick={onComment}>
+                                评价
+                            </div>
                         ) : null}
-                        <div className="orderItem__btn" onClick={this.handleRemove}>删除</div>
+                        <div
+                            className="orderItem__btn"
+                            onClick={this.handleRemove}
+                        >
+                            删除
+                        </div>
                     </div>
                 </div>
-                {this.renderEditArea()}
+                {isCommenting ? this.renderEditArea() : null}
             </div>
         )
     }
 
     // 渲染订单评价区域
     renderEditArea = () => {
+        const { comment, onSubmitComment, onCancelComment } = this.props
         return (
             <div className="orderItem__commentContainer">
                 <textarea
-                className="orderItem__comment"
-                onChange={this.handleCommentChange}
-                value={""}
+                    className="orderItem__comment"
+                    onChange={this.handleCommentChange}
+                    value={comment}
                 />
                 {this.renderStars()}
-                <button 
+                <button
                     className="orderItem__commentBtn"
-                    onClick={null}
-                    >提交</button>
-                <button className="orderItem__commentBtn"
-                    onClick={null}
-                    >取消</button>
+                    onClick={onSubmitComment}
+                >
+                    提交
+                </button>
+                <button
+                    className="orderItem__commentBtn"
+                    onClick={onCancelComment}
+                >
+                    取消
+                </button>
             </div>
         )
     }
 
     // 渲染五角星
     renderStars() {
+        const { stars, onStarsChange } = this.props
+        console.log('真实渲染', stars)
         return (
-          <div>
-            {[1, 2, 3, 4, 5].map((item, index) => {
-              const lightClass = 3 >= item ? "orderItem__star--light" : "";
-              return (
-                <span
-                  className={"orderItem__star " + lightClass}
-                  key={index}
-                  onClick={null}
-                >
-                  ★
-                </span>
-              );
-            })}
-          </div>
-        );
-      }
+            <div>
+                {[1, 2, 3, 4, 5].map((item, index) => {
+                    const lightClass =
+                        stars >= item ? 'orderItem__star--light' : ''
+                    return (
+                        <span
+                            className={'orderItem__star ' + lightClass}
+                            key={index}
+                            onClick={onStarsChange.bind(this, item)}
+                        >
+                            ★
+                        </span>
+                    )
+                })}
+            </div>
+        )
+    }
+
+    handleCommentChange = e => {
+        this.props.onCommentChange(e.target.value)
+    }
 
     handleRemove = () => {
         this.props.onRemove()

@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux'
 import OrderItem from '../../components/OrderItem'
 import './style.css'
-import { actions as userActions, getDeletingOrderId} from '../../../../redux/modules/user'
+import {
+    actions as userActions,
+    getDeletingOrderId,
+    getCommentingOrderId,
+    getCurrentOrderComment,
+    getCurrmentOrderStars
+} from '../../../../redux/modules/user'
 import Confirm from '../../../../components/Confirm'
-
 
 const tabTitles = ['全部订单', '待付款', '可使用', '退款/售后']
 
 class UserMain extends Component {
-        render() {
+    render() {
         const { data, currentTab, deletingId } = this.props
-        console.log('daletingId', deletingId)
         return (
             <div className="userMain">
                 <div className="userMain__menu">
@@ -48,20 +52,38 @@ class UserMain extends Component {
     }
 
     renderOrderList = data => {
+        const { commentingOrderId, orderComment, orderStars } = this.props
+        console.log('props中获取到的星星', orderStars)
         return data.map(item => {
-            return <OrderItem key={item.id} data={item} onRemove={this.handleRemove.bind(this, item.id)}/>
+            return (
+                <OrderItem
+                    key={item.id}
+                    data={item}
+                    isCommenting={item.id === commentingOrderId}
+                    comment={item.id === commentingOrderId ? orderComment : ''}
+                    stars={item.id === commentingOrderId ? orderStars : 0}
+                    onCommentChange={this.handleCommentChange}
+                    onStarsChange={this.handleStarsChange}
+                    onComment={this.handleComment.bind(this, item.id)}
+                    onRemove={this.handleRemove.bind(this, item.id)}
+                    onSubmitComment={this.handleSubmitComment}
+                    onCancelComment={this.handleCancelComment}
+                />
+            )
         })
     }
 
     renderConfirmDialog = () => {
         const { removeOrder, hideDeleteDialog } = this.props.userActions
-        return <Confirm 
-            content="确认删除该订单吗?"
-            cancelText="取消"
-            confirmText="确定"
-            onCancel={hideDeleteDialog}
-            onConfirm={removeOrder}
-        />
+        return (
+            <Confirm
+                content="确认删除该订单吗?"
+                cancelText="取消"
+                confirmText="确定"
+                onCancel={hideDeleteDialog}
+                onConfirm={removeOrder}
+            />
+        )
     }
 
     renderEmpty = () => {
@@ -74,11 +96,44 @@ class UserMain extends Component {
         )
     }
 
-    handleRemove = (id) => {
+    // 选中当前订单进行评价，使订单处于评价状态
+    handleComment = orderId => {
+        const { showCommentArea } = this.props.userActions
+        showCommentArea(orderId)
+    }
+
+    // 监听评论内容的改变，更新state
+    handleCommentChange = comment => {
+        const { setCommentContent } = this.props.userActions
+        setCommentContent(comment)
+    }
+
+    // 监听评分的改变，更新state
+    handleStarsChange = stars => {
+        console.log('stars', stars)
+        const { setStars } = this.props.userActions
+        setStars(stars)
+    }
+
+    // 提交评论
+    handleSubmitComment = () => {
+        console.log('提交评论')
+        const { submitComment } = this.props.userActions
+        submitComment()
+    }
+
+    // 取消评论状态(隐藏评论界面)
+    handleCancelComment = () => {
+        const { hideCommentArea } = this.props.userActions
+        hideCommentArea()
+    }
+
+    handleRemove = id => {
         console.log('showDeleteDiglog')
         this.props.userActions.showDeleteDialog(id)
     }
 
+    // 处理tab切换
     handleClickTab = index => {
         this.props.onClickTab(index)
     }
@@ -86,7 +141,10 @@ class UserMain extends Component {
 
 const mapStateToProps = (state, props) => {
     return {
-        deletingId: getDeletingOrderId(state)
+        deletingId: getDeletingOrderId(state),
+        commentingOrderId: getCommentingOrderId(state),
+        orderComment: getCurrentOrderComment(state),
+        orderStars: getCurrmentOrderStars(state)
     }
 }
 
@@ -96,4 +154,7 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserMain)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(UserMain)

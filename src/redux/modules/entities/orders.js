@@ -11,7 +11,8 @@ export const REFUND_TYPE = 4 // 退款
 
 export const types = {
     //删除订单
-    DELETE_ORDER: 'ORDER/DELETE_ORDER'
+    DELETE_ORDER: 'ORDER/DELETE_ORDER',
+    ADD_COMMENT: 'ORDER/ADD_COMMENT'
 }
 
 export const actions = {
@@ -19,18 +20,30 @@ export const actions = {
     deleteOrder: orderId => ({
         type: types.DELETE_ORDER,
         orderId
+    }),
+    // 新增评论
+    addComment: (orderId, commentId) => ({
+        type: types.ADD_COMMENT,
+        orderId,
+        commentId
     })
 }
-
-
 
 const reducer = (state = {}, action) => {
     if (action.type === types.DELETE_ORDER) {
         const {[action.orderId]: deleteOrder, ...restOrders} = state
         return restOrders
-    }
-    // 外部影响，实体组件如果存在响应，也应该进行更新
-    else if (action.response && action.response.orders) {
+    } else if (action.type === types.ADD_COMMENT) {
+        // 在该订单中，新增评论字段
+        return {
+            ...state,
+            [action.orderId]: {
+                ...state[action.orderId],
+                commentId: action.commentId
+            }
+        }
+    } else if (action.response && action.response.orders) {
+        // 外部影响，实体组件如果存在响应，也应该进行更新
         return { ...state, ...action.response.orders }
     }
     return state
