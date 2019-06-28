@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import UserMain from "./components/UserMain"
+import UserMain from "./container/UserMain"
 import UserHeader from "./components/UserHeader"
 import { getOrders, getCurrentTab, actions as userActions } from '../../redux/modules/user';
 import { actions as loginActions } from '../../redux/modules/login'

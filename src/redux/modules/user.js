@@ -4,7 +4,9 @@ import {
     TO_PAY_TYPE,
     AVAILABLE_TYPE,
     REFUND_TYPE,
-    getOrderById
+    getOrderById,
+    actions as orderActinos,
+    types as orderTypes
 } from './entities/orders'
 import { FETCH_DATA } from '../middleware/api'
 import { combineReducers } from 'redux'
@@ -17,7 +19,11 @@ const initState = {
         availableIds: [], // 可使用的订单id
         refundIds: [] // 退款订单id
     },
-    currentTab: 0 // 维护 选中tab
+    currentTab: 0, // 维护 选中tab
+    currentOrder: { // 维护 选中的订单
+        id: null,
+        isDeleting: false,
+    }
 }
 
 // actionTypes
@@ -26,9 +32,15 @@ export const types = {
     FETCH_ORDERS_REQUEST: 'USER/FETCH_ORDERS_REQUEST',
     FETCH_ORDERS_SUCCESS: 'USER/FETCH_ORDERS_SUCCESS',
     FETCH_ORDERS_FAILURE: 'USER/FETCH_ORDERS_FAILURE',
-
     // 设置当前选择的Tab
-    SET_CURRENT_TAB: 'USER/SET_CURRENT_TAB'
+    SET_CURRENT_TAB: 'USER/SET_CURRENT_TAB',
+    // 删除订单
+    DELETE_ORDER_REQUEST: 'USER/DELETE_ORDER_REQUEST',
+    DELETE_ORDER_SUCCESS: 'USER/DELETE_ORDER_SUCCESS',
+    DELETE_ORDER_FAILURE: 'USER/DELETE_ORDER_FAILURE',
+    // 删除确认对话框
+    SHOW_DELETE_ORDER: 'USER/SHOW_DELETE_ORDER',
+    HIDE_DELETE_ORDER: 'USER/HIDE_DELETE_ORDER',
 }
 
 // actionCreators
@@ -46,8 +58,42 @@ export const actions = {
     setCurrentTab: index => ({
         type: types.SET_CURRENT_TAB,
         index
+    }),
+    removeOrder: () => {
+        return (dispatch, getState) => {
+            const { id } = getState().user.currentOrder
+            if (id) {
+                dispatch(deleteOrderRequest())
+                new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        // 不仅要删除user模块下的订单
+                        // 也要删除实体模块order下的订单
+                        dispatch(deleteOrderSuccess(id))
+                        dispatch(orderActinos.deleteOrder(id))
+                        resolve()
+                    }, 500)
+                })
+            }
+        }
+    },
+    showDeleteDialog: orderId => ({
+        type: types.SHOW_DELETE_ORDER,
+        orderId
+    }),
+    hideDeleteDialog: orderId => ({
+        type: types.HIDE_DELETE_ORDER,
+        orderId
     })
 }
+
+const deleteOrderRequest = () => ({
+    type: types.DELETE_ORDER_REQUEST
+})
+
+const deleteOrderSuccess = (orderId) => ({
+    type: types.DELETE_ORDER_SUCCESS,
+    orderId
+})
 
 const fetchOrders = endpoint => ({
     [FETCH_DATA]: {
@@ -94,6 +140,16 @@ const orders = (state = initState.orders, action) => {
                 ...state,
                 isFetching: false
             }
+        case orderTypes.DELETE_ORDER:
+        case types.DELETE_ORDER_SUCCESS:
+            // 删除订单
+            return {
+                ...state,
+                ids: state.ids.filter(id => id !== action.orderId),
+                toPayIds: state.toPayIds.filter(id => id !== action.orderId),
+                availableIds: state.availableIds.filter(id => id !== action.orderId),
+                refundIds: state.refundIds.filter(id => id !== action.orderId),
+            }
         default:
             return state
     }
@@ -108,9 +164,28 @@ const currentTab = (state = initState.currentTab, action) => {
     }
 }
 
+const currentOrder = (state = initState.currentOrder, action) => {
+    switch (action.type) {
+        case types.SHOW_DELETE_ORDER:
+            console.log('order reducer', action)
+            return {
+                ...state,
+                id: action.orderId,
+                isDeleting: true
+            }
+        case types.HIDE_DELETE_DIALOG:
+        case types.DELETE_ORDER_SUCCESS:
+        case types.DELETE_ORDER_FAILURE:
+            return initState.currentOrder
+        default:
+            return state
+    }
+}
+
 const reducer = combineReducers({
     orders,
-    currentTab
+    currentTab,
+    currentOrder
 })
 
 export default reducer
@@ -125,4 +200,10 @@ export const getOrders = state => {
     // 当前选中的 tab
     const tab = tabs[index]
     return state.user.orders[tab].map(id => getOrderById(state, id))
+}
+
+export const getDeletingOrderId = (state) => {
+    if(state.user.currentOrder && state.user.currentOrder.isDeleting)
+        console.log('selector state', state)
+    return state.user.currentOrder && state.user.currentOrder.isDeleting ? state.user.currentOrder.id : null; 
 }
