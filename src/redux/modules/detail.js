@@ -33,14 +33,17 @@ const initState = {
 export const actions = {
     loadProductDetail: (id) => {
         return (dispatch, getState) => {
+            console.log('开始调用LoadProductaction', getState())
             // 如果产品已经获取过了，就不用再重复发送请求，使用缓存
             const product = getProduct(getState(), id)
             if (product) {
-                return dispatch({
+                console.log('产品已经存在过直接发送action')
+                return dispatch((id) => ({
                     type: types.FETCH_PRODUCT_DETAIL_SUCCESS,
                     id
-                })
+                }))
             }
+            console.log('产品没有存在过，发送新请求')
             const endpoint = url.getProductDetail(id)
             return dispatch(fetchProductDetail(endpoint, id))
         }

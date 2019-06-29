@@ -9,9 +9,9 @@ class Tip extends Component {
                 <div className="tip__alert">
                     <div className="tip__content">{message}</div>
                     <div className="tip__btns">
-                        <a className="tip__btn" onClick={onClose}>
+                        <button className="tip__btn" onClick={onClose}>
                             确定
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

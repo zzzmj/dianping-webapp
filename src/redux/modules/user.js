@@ -13,9 +13,17 @@ import { actions as commentActions } from './entities/comments'
 import { FETCH_DATA } from '../middleware/api'
 import { combineReducers } from 'redux'
 
+// 建立orderType与state中key的映射
+const typeToKey = {
+    [TO_PAY_TYPE]: 'toPayIds',
+    [AVAILABLE_TYPE]: 'availableIds',
+    [REFUND_TYPE]: 'availableIds'
+}
+
 const initState = {
     orders: {
         isFetching: false,
+        loaded: false, // 标记用户原来的订单是否被加载
         ids: [],
         toPayIds: [], // 待付款的订单id
         availableIds: [], // 可使用的订单id
@@ -63,8 +71,8 @@ export const actions = {
     // 加载订单列表
     loadOrders: () => {
         return (dispatch, getState) => {
-            const { ids } = getState().user.orders
-            if (ids.length > 0) {
+            const { loaded } = getState().user.orders
+            if (loaded) {
                 return null
             }
             const endpoint = url.getOrders()
@@ -198,6 +206,7 @@ const orders = (state = initState.orders, action) => {
             return {
                 ...state,
                 isFetching: false,
+                loaded: true,
                 ids: state.ids.concat(res.ids),
                 toPayIds: state.toPayIds.concat(toPayIds),
                 availableIds: state.availableIds.concat(availableIds),
@@ -208,6 +217,22 @@ const orders = (state = initState.orders, action) => {
                 ...state,
                 isFetching: false
             }
+        case orderTypes.ADD_ORDER:
+            // 拿到action派发过来的order
+            const { order } = action
+            // order类型 对应的state key字段
+            const key = typeToKey[order.type]
+
+            return key
+            ? {
+                ...state,
+                ids: [order.id].concat(state.ids),
+                [key]: [order.id].concat(state[key])
+              }
+            : {
+                ...state,
+                ids: [order.id].concat(state.ids)
+              };
         case orderTypes.DELETE_ORDER:
         case types.DELETE_ORDER_SUCCESS:
             // 删除订单

@@ -37,4 +37,7 @@
     width: 50%;
     height: 100%;
     box-sizing: border-box;
+    background: #fff;
+    border: none;
+    border-radius: 10px;
 }
