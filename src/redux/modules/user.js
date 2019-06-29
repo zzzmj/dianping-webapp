@@ -250,7 +250,7 @@ const currentOrder = (state = initState.currentOrder, action) => {
             }
         
         case types.HIDE_COMMENT_AREA:
-        case types.HIDE_DELETE_DIALOG:
+        case types.HIDE_DELETE_ORDER:
         case types.DELETE_ORDER_SUCCESS:
         case types.DELETE_ORDER_FAILURE:
         case types.POST_COMMENT_SUCCESS:

@@ -15,10 +15,10 @@ class Confirm extends Component {
                 <div className="confirm__alert">
                     <div className="confirm__content">{content}</div>
                     <div className="confirm__btns">
-                        <button className="confirm__btn" onClick={onCancel}>
+                        <button className="confirm__btn confirm__btn--cancel" onClick={onCancel}>
                             {cancelText}
                         </button>
-                        <button className="confirm__btn" onClick={onConfirm}>
+                        <button className="confirm__btn confirm__btn--confirm" onClick={onConfirm}>
                             {confirmText}
                         </button>
                     </div>

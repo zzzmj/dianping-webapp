@@ -51,6 +51,7 @@ class UserMain extends Component {
         )
     }
 
+    // 渲染订单列表 ( 从 redux 中拿到所有订单数据)
     renderOrderList = data => {
         const { commentingOrderId, orderComment, orderStars } = this.props
         console.log('props中获取到的星星', orderStars)
@@ -73,8 +74,10 @@ class UserMain extends Component {
         })
     }
 
+    // 渲染删除确认框
     renderConfirmDialog = () => {
         const { removeOrder, hideDeleteDialog } = this.props.userActions
+        console.log('hide', hideDeleteDialog)
         return (
             <Confirm
                 content="确认删除该订单吗?"

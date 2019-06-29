@@ -38,4 +38,14 @@
     width: 50%;
     height: 100%;
     box-sizing: border-box;
+    border: 1px solid #eee;
+    background: #fff;
+}
+
+.confirm__btn--cancel {
+    border-bottom-left-radius: 8px;
+}
+
+.confirm__btn--confirm {
+    border-bottom-right-radius: 8px;
 }
