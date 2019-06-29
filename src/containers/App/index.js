@@ -11,6 +11,7 @@ import SearchResult from '../SearchResult'
 import Login from '../Login'
 import PrivateRoute from '../PrivateRoute'
 import User from '../User'
+import Purchase from '../Purchase'
 
 class App extends Component {
     render() {
@@ -26,6 +27,7 @@ class App extends Component {
                         <PrivateRoute path="/user" component={User} />
                         <Route path="/detail/:id" component={ProductDetail} />
                         <Route path="/search" component={Search} />
+                        <PrivateRoute path="/purchase/:id" component={Purchase} />
                         <Route path="/search_result" component={SearchResult} />
                         <Route path="/" component={Home} />
                     </Switch>

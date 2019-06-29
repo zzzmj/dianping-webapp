@@ -7,6 +7,7 @@ import searchResult from './searchResult'
 import login from './login'
 import app from './app'
 import user from './user'
+import purchase from './purchase'
 
 //合并成根reducer
 const rootReducer = combineReducers({
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     search,
     searchResult,
     login,
-    user
+    user,
+    purchase
 })
 
 export default rootReducer

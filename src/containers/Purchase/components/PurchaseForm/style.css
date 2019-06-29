@@ -1,0 +1,108 @@
+.purchaseForm__title {
+    padding: 10px 29px 10px 15px;
+    font-size: 14px;
+    color: #999;
+    position: relative;
+    font-weight: 400;
+}
+
+.purchaseForm__wrapper {
+    background-color: #fff;
+    padding-left: 15px;
+}
+
+.purchaseForm__row {
+    padding: 10px 16px 10px 0;
+    color: #999;
+    position: relative;
+    overflow: hidden;
+}
+
+.purchaseForm__row:not(:last-child) {
+    background-image: url(//www.dpfile.com/mod/mbase-css/2.0.1/dist/outline/img/repeat-x-bottom.png);
+    background-position: 0 bottom;
+    background-repeat: repeat-x;
+}
+
+.purchaseForm__rowLabel {
+    display: inline-block;
+    width: 50%;
+}
+
+.purchaseForm__rowValue {
+    float: right;
+}
+
+.purchaseForm__quantity {
+    width: 42px;
+    border: 1px solid #bbb;
+    color: #333;
+    font-size: 15px;
+    line-height: 26px;
+    text-align: center;
+    margin: 0 8px;
+}
+
+.purchaseForm__counter {
+    box-sizing: border-box;
+    text-align: center;
+    display: inline-block;
+    width: 30px;
+    border-radius: 2px;
+    padding: 4px 0 4px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.purchaseForm__counter--dec {
+    border: 1px solid #bbb;
+    color: #bbb;
+}
+
+.purchaseForm__counter--inc {
+    border: 1px solid #f63;
+    color: #f63;
+}
+
+.purchaseForm__remark {
+    overflow: hidden;
+    height: 45px;
+    line-height: 45px;
+    color: #666;
+    list-style: none;
+    padding-left: 15px;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.purchaseForm__remarkItem {
+    float: left;
+    margin-right: 10px;
+}
+
+.purchaseForm__sign {
+    background-image: url('https://www.dpfile.com/mod/app-m-tuangou/1.3.79/css/img/comm.png');
+    background-size: 25px auto;
+    background-position: 0 -275px;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    vertical-align: sub;
+    margin-right: 5px;
+}
+
+.purchaseForm__desc {
+    font-size: 12px;
+}
+
+.purchaseForm__submit {
+    display: block;
+    height: 40px;
+    margin: 10px 9px;
+    color: #fff;
+    background-color: #f63;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+}

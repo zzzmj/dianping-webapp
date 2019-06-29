@@ -28,7 +28,7 @@ class ProductDetail extends Component {
                     <Detail data={product}/>
                     <Remark data={product}/>
                 </div>) }
-                <BuyButton />
+                <BuyButton id={product ? product.id : ''}/>
             </div>
         )
     }

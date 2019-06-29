@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './style.css'
 
 class ProductOverview extends Component {
     render() {
         const {
+            id,
             picture,
             shop,
             product,
@@ -35,7 +37,10 @@ class ProductOverview extends Component {
                     <span className="productOverview__price--old">
                         ¥{oldPrice}
                     </span>
-                    <a className="productOverview__btn" href="/">立即购买</a>
+                    {/* TODO 填写产品ID */}
+                    <Link 
+                        className="productOverview__btn" 
+                        to={`/purchase/${id}`}>立即购买</Link>
                 </div>
                 <ul className="productOverview__remark">
                     <li className="productOverview__remarkItem">

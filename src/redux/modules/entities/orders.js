@@ -9,13 +9,26 @@ export const TO_PAY_TYPE = 2 // 代付款
 export const AVAILABLE_TYPE = 3 // 可使用
 export const REFUND_TYPE = 4 // 退款
 
+let orderIdCounter = 10;
+
 export const types = {
+    // 新增订单
+    ADD_ORDER: 'ORDER/ADD_ORDER',
     //删除订单
     DELETE_ORDER: 'ORDER/DELETE_ORDER',
     ADD_COMMENT: 'ORDER/ADD_COMMENT'
 }
 
 export const actions = {
+    // 新增订单
+    addOrder: order =>{
+        const orderId = `o-${orderIdCounter++}`
+        return {
+            type: types.ADD_ORDER,
+            orderId,
+            order
+        }
+    },
     // 删除订单
     deleteOrder: orderId => ({
         type: types.DELETE_ORDER,
@@ -30,7 +43,12 @@ export const actions = {
 }
 
 const reducer = (state = {}, action) => {
-    if (action.type === types.DELETE_ORDER) {
+    if (action.type === types.ADD_ORDER) {
+        return {
+            ...state,
+            [action.orderId]: action.order
+        }
+    } else if (action.type === types.DELETE_ORDER) {
         const {[action.orderId]: deleteOrder, ...restOrders} = state
         return restOrders
     } else if (action.type === types.ADD_COMMENT) {
