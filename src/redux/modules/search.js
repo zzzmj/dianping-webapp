@@ -198,12 +198,10 @@ export default reducer
 
 // selectors
 export const getInputText = (state) => {
-    console.log('selector函数, getInputText', state)
     return state.search.inputText
 }
 
 export const getPopularKeywords = (state) => {
-    console.log('selector函数, getPopularKeywords', state)
     let ids = state.search.popularKeywords.ids
     if (ids) {
         return ids.map(id => {

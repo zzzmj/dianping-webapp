@@ -4,14 +4,15 @@ import {
     TO_PAY_TYPE,
     AVAILABLE_TYPE,
     REFUND_TYPE,
-    getOrderById,
     actions as orderActinos,
-    types as orderTypes
+    types as orderTypes,
+    getAllOrders
 } from './entities/orders'
 import { actions as commentActions } from './entities/comments'
 
 import { FETCH_DATA } from '../middleware/api'
 import { combineReducers } from 'redux'
+import { createSelector } from 'reselect';
 
 // 建立orderType与state中key的映射
 const typeToKey = {
@@ -307,15 +308,31 @@ export default reducer
 
 // selectors
 export const getCurrentTab = state => state.user.currentTab
-export const getOrders = state => {
-    // 四种 tab 标签
-    const tabs = ['ids', 'toPayIds', 'availableIds', 'refundIds']
-    // 当前 tab 下标
-    const index = state.user.currentTab
-    // 当前选中的 tab
-    const tab = tabs[index]
-    return state.user.orders[tab].map(id => getOrderById(state, id))
-}
+
+export const getUserOrders = state => state.user.orders
+// export const getOrders = state => {
+//     // 四种 tab 标签
+//     const tabs = ['ids', 'toPayIds', 'availableIds', 'refundIds']
+//     // 当前 tab 下标
+//     const index = state.user.currentTab
+//     // 当前选中的 tab
+//     const tab = tabs[index]
+//     console.log('tab', tab)
+//     console.log('userOrders', getUserOrders(state))
+//     return state.user.orders[tab].map(id => getOrderById(state, id))
+// }
+export const getOrders = createSelector(
+    [getCurrentTab, getUserOrders, getAllOrders],
+    (tabIndex, userOrders, orders) => {
+        const tabs = ['ids', 'toPayIds', 'availableIds', 'refundIds']
+        // 当前选中的 tab
+        const tab = tabs[tabIndex]
+        // 拿到对应tab维护的订单数组
+        const ordersIds = userOrders[tab]
+        // 通过id 拿到order表中的数据
+        return ordersIds.map(id => orders[id])
+    }
+)
 
 export const getDeletingOrderId = state => {
     if (state.user.currentOrder && state.user.currentOrder.isDeleting)
