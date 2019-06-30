@@ -2,14 +2,6 @@ import React, { Component } from 'react'
 import './style.css'
 
 class OrderItem extends Component {
-    shouldComponentUpdate(preProps, preState) {
-        if (this.props.isCommenting) {
-            return true
-        } else {
-            return false
-        }
-    }
-
     render() {
         const {
             title,
