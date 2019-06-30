@@ -16,7 +16,6 @@ import './style.css'
 
 class Purchase extends Component {
     render() {
-        console.log('purchase', this.props.productDetail)
         const {
             productDetail,
             quantity,
@@ -46,8 +45,6 @@ class Purchase extends Component {
     componentDidMount() {
         //组件加载完成后，通过地址栏参数的产品id去获取产品价格信息
         const id = this.props.match.params.id
-        console.log(this.props)
-        console.log('挂载完获取产品id：', id)
         // 使用detail下的action发送请求产品数据
         this.props.detailActions.loadProductDetail(id)
     }
@@ -74,7 +71,6 @@ class Purchase extends Component {
 
     handleSubmit = () => {
         const productId = this.props.match.params.id
-        console.log('提交id', productId)
         this.props.purchaseActions.submitOrder(productId)
     }
 

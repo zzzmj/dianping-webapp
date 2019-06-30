@@ -4,7 +4,6 @@ import './style.css'
 class ShopInfo extends Component {
     render() {
         const { name, address, phone, star } = this.props.data
-        console.log(this.props.data)
         const { total } = this.props.total
         return (
             <div className="shopInfo">

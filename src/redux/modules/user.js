@@ -310,17 +310,7 @@ export default reducer
 export const getCurrentTab = state => state.user.currentTab
 
 export const getUserOrders = state => state.user.orders
-// export const getOrders = state => {
-//     // 四种 tab 标签
-//     const tabs = ['ids', 'toPayIds', 'availableIds', 'refundIds']
-//     // 当前 tab 下标
-//     const index = state.user.currentTab
-//     // 当前选中的 tab
-//     const tab = tabs[index]
-//     console.log('tab', tab)
-//     console.log('userOrders', getUserOrders(state))
-//     return state.user.orders[tab].map(id => getOrderById(state, id))
-// }
+
 export const getOrders = createSelector(
     [getCurrentTab, getUserOrders, getAllOrders],
     (tabIndex, userOrders, orders) => {
@@ -336,7 +326,6 @@ export const getOrders = createSelector(
 
 export const getDeletingOrderId = state => {
     if (state.user.currentOrder && state.user.currentOrder.isDeleting)
-        console.log('selector state', state)
     return state.user.currentOrder && state.user.currentOrder.isDeleting
         ? state.user.currentOrder.id
         : null

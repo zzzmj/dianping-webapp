@@ -54,7 +54,6 @@ class UserMain extends Component {
     // 渲染订单列表 ( 从 redux 中拿到所有订单数据)
     renderOrderList = data => {
         const { commentingOrderId, orderComment, orderStars } = this.props
-        console.log('props中获取到的星星', orderStars)
         return data.map(item => {
             return (
                 <OrderItem
@@ -77,7 +76,6 @@ class UserMain extends Component {
     // 渲染删除确认框
     renderConfirmDialog = () => {
         const { removeOrder, hideDeleteDialog } = this.props.userActions
-        console.log('hide', hideDeleteDialog)
         return (
             <Confirm
                 content="确认删除该订单吗?"
@@ -113,14 +111,12 @@ class UserMain extends Component {
 
     // 监听评分的改变，更新state
     handleStarsChange = stars => {
-        console.log('stars', stars)
         const { setStars } = this.props.userActions
         setStars(stars)
     }
 
     // 提交评论
     handleSubmitComment = () => {
-        console.log('提交评论')
         const { submitComment } = this.props.userActions
         submitComment()
     }
@@ -132,7 +128,6 @@ class UserMain extends Component {
     }
 
     handleRemove = id => {
-        console.log('showDeleteDiglog')
         this.props.userActions.showDeleteDialog(id)
     }
 

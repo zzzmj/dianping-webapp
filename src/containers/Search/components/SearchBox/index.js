@@ -20,7 +20,7 @@ class SearchBox extends Component {
                             onClick={this.handleClear}
                         />
                     ) : null}
-                    <span className="searchBox__cancel">取消</span>
+                    <span className="searchBox__cancel" onClick={this.props.onCancel}>取消</span>
                 </div>
                 {visiable ? this.renderSuggestList() : null}
             </div>

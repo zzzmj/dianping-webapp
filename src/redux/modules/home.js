@@ -54,7 +54,6 @@ export const actions = {
             // 计算该页码第一条数据的下标
             const rowIndex = pageCount * params.PAGE_SIZE_LIKES
             const endpoint = url.getProductList(params.PATH_LIKES, rowIndex, params.PAGE_SIZE_LIKES)
-            console.log('loadLikes', endpoint)
 
             return dispatch(fetchLikes(endpoint))
         }
@@ -162,10 +161,7 @@ export const getLikes = state => {
 
 // 获取特惠商品state
 export const getDiscounts = state => {
-    console.log(state.home.discounts)
     return state.home.discounts.ids.map(id => {
-        console.log(state.entities)
-        console.log('id：', state.entities.products[id])
         return state.entities.products[id]
     })
 }

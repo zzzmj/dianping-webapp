@@ -45,7 +45,6 @@ class Search extends Component {
 
     componentDidMount() {
         // 组件挂载后加载流行词
-        console.log('开始发送加载流行词请求')
         const { loadPopularKeywords } = this.props.searchActions
         loadPopularKeywords()
     }
@@ -69,12 +68,12 @@ class Search extends Component {
         // 1. 清除输入框内容。 2. 返回到主页
         const { clearInputText } = this.props.searchActions
         clearInputText()
+        console.log('点击了取消')
         this.props.history.goBack()
     }
 
     // 处理点击关键词
     handleClickKeyword = keyword => {
-        console.log('keyword', keyword)
         // 1. 添加到历史记录 2. 加载搜索结果页的商品列表 3. 跳转到新页面
         const { addHistoryKeyword } = this.props.searchActions
         addHistoryKeyword(keyword)

@@ -47,10 +47,6 @@ export const actions = {
 
 const reducer = (state = {}, action) => {
     if (action.type === types.ADD_ORDER) {
-        console.log('在order表中', {
-            ...state,
-            [action.orderId]: action.order
-        })
         return {
             ...state,
             [action.orderId]: action.order

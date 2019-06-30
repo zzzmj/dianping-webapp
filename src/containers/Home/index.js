@@ -12,9 +12,6 @@ import { actions as homeActions, getLikes, getDiscounts, getPageCountOfLikes } f
 class Home extends Component {
     render() {
         const { likes, discounts, pageCount, loadLikes } = this.props
-        console.log('likes:', likes)
-        console.log('discounts:', discounts)
-        console.log('pageCount:', pageCount)
         return (
             <div>
                 <HomeHeader />
@@ -47,7 +44,6 @@ const mapDispatchToProps = dispatch => {
             dispatch(homeActions.loadLikes())
         },
         loadDiscount: () => {
-            console.log('发送请求loadDiscount')
             dispatch(homeActions.loadDiscounts())
         }
     }

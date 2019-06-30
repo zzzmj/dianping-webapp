@@ -6,7 +6,6 @@ import { getLoginStatus } from '../../redux/modules/login'
 class PrivateRoute extends Component {
     render() {
         const { component: Component, login, ...rest } = this.props
-        console.log('login:', login)
         return (
             <Route
                 {...rest}

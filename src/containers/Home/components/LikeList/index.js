@@ -16,7 +16,6 @@ class LikeList extends Component {
     }
 
     render() {
-        console.log('猜你喜欢', this.props)
         const { data, pageCount } = this.props
         return (
             <div className="likeList" ref={this.myRef}>

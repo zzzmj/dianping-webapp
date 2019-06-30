@@ -213,7 +213,6 @@ export const getPopularKeywords = (state) => {
 }
 
 export const getRelatedKeywords = state => {
-    console.log('selector函数, getRelatedKeywords', state)
 
     const text = state.search.inputText;
     if(!text || text.trim().length === 0) {
@@ -229,7 +228,6 @@ export const getRelatedKeywords = state => {
 }
 
 export const getHistoryKeywords = (state) => {
-    console.log('selector函数, getHistoryKeywords', state)
 
     return state.search.historyKeywords.map(id => {
         return getKeywordById(state, id)

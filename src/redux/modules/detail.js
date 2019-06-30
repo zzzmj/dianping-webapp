@@ -33,17 +33,14 @@ const initState = {
 export const actions = {
     loadProductDetail: (id) => {
         return (dispatch, getState) => {
-            console.log('开始调用LoadProductaction', getState())
             // 如果产品已经获取过了，就不用再重复发送请求，使用缓存
             const product = getProduct(getState(), id)
             if (product) {
-                console.log('产品已经存在过直接发送action')
                 return dispatch((id) => ({
                     type: types.FETCH_PRODUCT_DETAIL_SUCCESS,
                     id
                 }))
             }
-            console.log('产品没有存在过，发送新请求')
             const endpoint = url.getProductDetail(id)
             return dispatch(fetchProductDetail(endpoint, id))
         }
@@ -96,20 +93,17 @@ const fetchRelatedShop = (endpoint, id) => ({
 const product = (state = initState.product, action) => {
     switch (action.type) {
         case types.FETCH_PRODUCT_REQUEST:
-            console.log('pruductReducer进行数据处理，返回新的state', action.type)
             return {
                 ...state,
                 isFetching: true
             }
         case types.FETCH_PRODUCT_SUCCESS:
-            console.log('pruductReducer进行数据处理，返回新的state', action.type)
             return {
                 ...state,
                 isFetching: false,
                 id: action.id
             }
         case types.FETCH_PRODUCT_FAILURE:
-            console.log('pruductReducer进行数据处理，返回新的state', action.type)
             return {
                 ...state,
                 isFetching: false,
@@ -123,25 +117,17 @@ const product = (state = initState.product, action) => {
 const relatedShop = (state = initState.relatedShop, action) => {
     switch (action.type) {
         case types.FETCH_SHOP_REQUEST:
-            console.log('relatedShop进行数据处理，请求中，返回新的state', action)
             return {
                 ...state,
                 isFetching: true
             }
         case types.FETCH_SHOP_SUCCESS:
-            console.log('relatedShop进行数据处理，请求成功，返回新的state', {
-                ...state,
-                isFetching: false,
-                id: action.id
-            })
             return {
                 ...state,
                 isFetching: false,
                 id: action.id
             }
         case types.FETCH_SHOP_FAILURE:
-            console.log('relatedShop进行数据处理，返回新的state', action)
-
             return {
                 ...state,
                 isFetching: false,
@@ -161,12 +147,10 @@ export default reducer
 
 // selectors
 export const getProduct = (state, id) => {
-    console.log('第七步, 从store中取出状态更新组件')
     return getProductDetail(state, id)
 }
 
 export const getRelatedShop = (state, id) => {
-    console.log('第七步, 从store中取出状态更新组件')
     const product = state.entities.products[id]
     if (!product) return null
     const shopId = product.nearestShop

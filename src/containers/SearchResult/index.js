@@ -8,7 +8,6 @@ import { getSearchShops } from '../../redux/modules/searchResult'
 class SearchResult extends Component {
     render() {
         const { searchShops } = this.props
-        console.log(searchShops)
         return (
             <div>
                 <SearchHeader

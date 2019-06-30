@@ -47,7 +47,6 @@ export const actions = {
                         text: [text1, text2],
                         type: AVAILABLE_TYPE
                     }
-                    console.log('构造而成的order', order)
                     dispatch(orderActions.addOrder(order))
                     dispatch({ type: types.SUBMIT_ORDER_SUCCESS })
                     resovle()

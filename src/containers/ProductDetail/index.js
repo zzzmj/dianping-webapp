@@ -10,14 +10,11 @@ import { actions, getProduct, getRelatedShop } from '../../redux/modules/detail'
 
 class ProductDetail extends Component {
     shouldComponentUpdate(nextProps, nextState) {
-        console.log('页面变化，触发页面重绘')
         return true
     }
     
     render() {
         const { product, relatedShop } = this.props
-        console.log('详情页product', product)
-        console.log('详情页shop', relatedShop)
 
         return (
             <div>

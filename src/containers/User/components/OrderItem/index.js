@@ -21,7 +21,6 @@ class OrderItem extends Component {
         } = this.props.data
 
         const { isCommenting, onComment } = this.props
-        console.log('text:', text)
         return (
             <div className="orderItem">
                 <div className="orderItem__title">
@@ -92,7 +91,6 @@ class OrderItem extends Component {
     // 渲染五角星
     renderStars() {
         const { stars, onStarsChange } = this.props
-        console.log('真实渲染', stars)
         return (
             <div>
                 {[1, 2, 3, 4, 5].map((item, index) => {

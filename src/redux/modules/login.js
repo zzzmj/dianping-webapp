@@ -18,7 +18,6 @@ export const actions = {
     login: () => {
         return (dispatch, getState) => {
             const { username, password } = getState().login
-            console.log('login', getState().login)
             if (!username || username.length <= 0 || !password || password.length <= 0) {
                 return dispatch(loginFailure('用户名和密码不能为空'))
             }
@@ -65,7 +64,6 @@ const loginFailure = (error) => ({
 })
 
 const reducer = (state = initState, action) => {
-    console.log(state)
     switch (action.type) {
         case types.LOGIN_REQUEST:
             return {
