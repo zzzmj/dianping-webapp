@@ -2,9 +2,9 @@ import { get } from '../../utils/request'
 
 // 执行网络请求
 const fetchData = (endpoint, schema) => {
-    console.log('第二步，开始发送网络请求，地址：', endpoint)
+    // console.log('第二步，开始发送网络请求，地址：', endpoint)
     return get(endpoint).then(data => {
-        console.log('第三步，请求data成功', data)
+        // console.log('第三步，请求data成功', data)
         return normalizeData(data, schema)
     })
 }
@@ -48,11 +48,7 @@ const normalizeData = (data, schema) => {
         kvObj[data[id]] = data
         ids.push(data[id])
     }
-    var newOjb = {
-        [name]: kvObj,
-        ids
-    }
-    console.log('第四步：扁平化后data数据：', newOjb)
+    // console.log('第四步：扁平化后data数据：', newOjb)
     return {
         [name]: kvObj,
         ids
@@ -69,7 +65,7 @@ export default store => next => action => {
     if (typeof callAPI === 'undefined') {
         return next(action)
     }
-    console.log("第一步：callAPI中间件开始处理action", callAPI)
+    // console.log("第一步：callAPI中间件开始处理action", callAPI)
     // 派发的action必须有着三个属性
     const { endpoint, schema, types } = callAPI
     if (typeof endpoint !== 'string') {
@@ -99,10 +95,10 @@ export default store => next => action => {
 
     return fetchData(endpoint, schema).then(
         response => {
-            console.log('第五步，最终dispatch的数据', actionWith({
-                type: succesType,
-                response
-            }))
+            // console.log('第五步，最终dispatch的数据', actionWith({
+            //     type: succesType,
+            //     response
+            // }))
             next(actionWith({
                 type: succesType,
                 response

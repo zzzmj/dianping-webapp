@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Tip from '../../../../components/Tip'
 import './style.css'
 
 class OrderItem extends Component {
@@ -12,7 +13,7 @@ class OrderItem extends Component {
             type
         } = this.props.data
 
-        const { isCommenting, onComment } = this.props
+        const { isCommenting, onComment, commentTip } = this.props
         return (
             <div className="orderItem">
                 <div className="orderItem__title">
@@ -49,6 +50,9 @@ class OrderItem extends Component {
                     </div>
                 </div>
                 {isCommenting ? this.renderEditArea() : null}
+                {commentTip ? 
+                    <Tip message="评论数据成功保存到Redux中" onClose={this.handleCloseTip}/>
+                    : null}
             </div>
         )
     }
@@ -104,6 +108,10 @@ class OrderItem extends Component {
 
     handleCommentChange = e => {
         this.props.onCommentChange(e.target.value)
+    }
+
+    handleCloseTip = () => {
+        this.props.onHideCommentTip()
     }
 
     handleRemove = () => {

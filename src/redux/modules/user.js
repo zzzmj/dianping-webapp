@@ -37,8 +37,9 @@ const initState = {
         isDeleting: false,
         isCommenting: false,
         comment: '',
-        stars: 0
-    }
+        stars: 0,
+        commentTip: false, // 显示提交评论是否成功的提示框
+    },
 }
 
 // actionTypes
@@ -64,7 +65,10 @@ export const types = {
     // 提交评价
     POST_COMMENT_REQUEST: 'USER/POST_COMMENT_REQUEST',
     POST_COMMENT_SUCCESS: 'USER/POST_COMMENT_SUCCESS',
-    POST_COMMENT_FAILURE: 'USER/POST_COMMENT_FAILURE'
+    POST_COMMENT_FAILURE: 'USER/POST_COMMENT_FAILURE',
+    // 评论数据提交的对话框
+    SHOW_COMMENT_TIP: 'USER/SHOW_COMMENT_TIP',
+    HIDE_COMMENT_TIP: 'USER/HIDE_COMMENT_TIP'
 }
 
 // actionCreators
@@ -152,7 +156,15 @@ export const actions = {
                 })
             })
         }
-    }
+    },
+    // 显示对话框
+    showCommentTip: () => ({
+        type: types.SHOW_COMMENT_TIP
+    }),
+    // 隐藏对话框
+    hideCommentTip: () => ({
+        type: types.HIDE_COMMENT_TIP
+    })
 }
 
 const fetchOrders = endpoint => ({
@@ -281,7 +293,14 @@ const currentOrder = (state = initState.currentOrder, action) => {
         case types.DELETE_ORDER_FAILURE:
         case types.POST_COMMENT_SUCCESS:
         case types.POST_COMMENT_FAILURE:
-            return initState.currentOrder
+            return {
+                ...state,
+                id: null,
+                isDeleting: false,
+                isCommenting: false,
+                comment: '',
+                stars: 0,
+            }
         
         case types.SET_COMMENT_CONTENT:
             return {
@@ -292,6 +311,16 @@ const currentOrder = (state = initState.currentOrder, action) => {
             return {
                 ...state,
                 stars: action.stars
+            }
+        case types.SHOW_COMMENT_TIP:
+            return {
+                ...state,
+                commentTip: true
+            }
+        case types.HIDE_COMMENT_TIP:
+            return {
+                ...state,
+                commentTip: false
             }
         default:
             return state
@@ -308,6 +337,8 @@ export default reducer
 
 // selectors
 export const getCurrentTab = state => state.user.currentTab
+
+export const getCommentTip = state => state.user.currentOrder.commentTip
 
 export const getUserOrders = state => state.user.orders
 

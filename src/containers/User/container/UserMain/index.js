@@ -8,7 +8,8 @@ import {
     getDeletingOrderId,
     getCommentingOrderId,
     getCurrentOrderComment,
-    getCurrmentOrderStars
+    getCurrmentOrderStars,
+    getCommentTip
 } from '../../../../redux/modules/user'
 import Confirm from '../../../../components/Confirm'
 
@@ -53,12 +54,13 @@ class UserMain extends Component {
 
     // 渲染订单列表 ( 从 redux 中拿到所有订单数据)
     renderOrderList = data => {
-        const { commentingOrderId, orderComment, orderStars } = this.props
+        const { commentingOrderId, orderComment, orderStars, commentTip } = this.props
         return data.map(item => {
             return (
                 <OrderItem
                     key={item.id}
                     data={item}
+                    commentTip={commentTip}
                     isCommenting={item.id === commentingOrderId}
                     comment={item.id === commentingOrderId ? orderComment : ''}
                     stars={item.id === commentingOrderId ? orderStars : 0}
@@ -68,6 +70,7 @@ class UserMain extends Component {
                     onRemove={this.handleRemove.bind(this, item.id)}
                     onSubmitComment={this.handleSubmitComment}
                     onCancelComment={this.handleCancelComment}
+                    onHideCommentTip={this.handleHideCommentTip}
                 />
             )
         })
@@ -117,14 +120,21 @@ class UserMain extends Component {
 
     // 提交评论
     handleSubmitComment = () => {
-        const { submitComment } = this.props.userActions
+        // 1. 将数据保存到Redux中 2. 显示提交成功对话框
+        const { submitComment, showCommentTip } = this.props.userActions
         submitComment()
+        showCommentTip()
     }
 
     // 取消评论状态(隐藏评论界面)
     handleCancelComment = () => {
         const { hideCommentArea } = this.props.userActions
         hideCommentArea()
+    }
+
+    // 隐藏提交成功对话框
+    handleHideCommentTip = () => {
+        this.props.userActions.hideCommentTip()
     }
 
     handleRemove = id => {
@@ -142,7 +152,8 @@ const mapStateToProps = (state, props) => {
         deletingId: getDeletingOrderId(state),
         commentingOrderId: getCommentingOrderId(state),
         orderComment: getCurrentOrderComment(state),
-        orderStars: getCurrmentOrderStars(state)
+        orderStars: getCurrmentOrderStars(state),
+        commentTip: getCommentTip(state)
     }
 }
 
