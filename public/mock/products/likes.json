@@ -6,26 +6,26 @@
             "s-1",
             "s-1"
         ],
-        "shop": "院落创意菜",
+        "shop": "花西拾鲜花",
         "tag": "免预约",
-        "picture": "https://p0.meituan.net/deal/e6864ed9ce87966af11d922d5ef7350532676.jpg.webp@180w_180h_1e_1c_1l_80q|watermark=0",
+        "picture": "https://p1.meituan.net/dpdeal/803a92dea23fd3050c4b708d2416f6b8248085.jpg.webp@180w_180h_1e_1c_1l_80q|watermark=0",
         "product": "「3店通用」百香果（冷饮）1扎",
-        "currentPrice": 19.9,
-        "oldPrice": 48,
-        "saleDesc": "已售6034"
+        "currentPrice": 96,
+        "oldPrice": 398,
+        "saleDesc": "已售265"
     },
     {
         "id": "p-2",
         "shopIds": [
             "s-2"
         ],
-        "shop": "正一味",
+        "shop": "豆记匠品",
         "tag": "免预约",
-        "picture": "https://p0.meituan.net/deal/4d32b2d9704fda15aeb5b4dc1d4852e2328759.jpg%40180w_180h_1e_1c_1l_80q%7Cwatermark%3D0",
-        "product": "[5店通用] 肥牛石锅拌饭+鸡蛋羹1份",
-        "currentPrice": 29,
-        "oldPrice": 41,
-        "saleDesc": "已售15500"
+        "picture": "https://p1.meituan.net/deal/8d8a080662e316cb545bffdc08877a9944515.jpg.webp@180w_180h_1e_1c_1l_80q|watermark=0",
+        "product": "[21店通用] 低至9.3折代金券1张 ",
+        "currentPrice": 18.6,
+        "oldPrice": 20,
+        "saleDesc": "已售16150"
     },
     {
         "id": "p-3",
