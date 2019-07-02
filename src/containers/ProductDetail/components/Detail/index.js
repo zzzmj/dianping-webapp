@@ -3,6 +3,14 @@ import './style.css'
 
 class Detail extends Component {
     render() {
+        const {
+            currentPrice,
+            oldPrice,
+            detail: {
+                category,
+                products
+            }
+        } = this.props.data
         return (
             <div className="detail">
                 <div className="detail__header">
@@ -17,14 +25,21 @@ class Detail extends Component {
                     <tbody>
                         <tr className="detail__row">
                             <th colSpan="3" className="detail__category">
-                                饮品
+                                {category}
                             </th>
                         </tr>
-                        <tr className="detail__row">
-                            <td>白果香（冷饮）</td>
-                            <td className="detail__td--alignRight">1扎</td>
-                            <td className="detail__td--alignRight">48元</td>
-                        </tr>
+                        {
+                            products.map((item, index) => {
+                                return (
+                                    <tr className="detail__row" key={index}>
+                                        <td>{item.name}</td>
+                                        <td className="detail__td--alignRight">{item.quantity}</td>
+                                        <td className="detail__td--alignRight">{item.price}</td>
+                                    </tr>
+                                )
+                            })
+                        }
+                        
                         <tr className="detail__row">
                             <td />
                             <td className="detail__td--price">
@@ -35,10 +50,10 @@ class Detail extends Component {
                                 </strong>
                             </td>
                             <td className="detail__td--price">
-                                48元
+                                {oldPrice}
                                 <br />
                                 <strong className="detail__td--priceNew">
-                                    19.9元
+                                    {currentPrice}
                                 </strong>
                             </td>
                         </tr>

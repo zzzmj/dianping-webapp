@@ -22,7 +22,7 @@ class App extends Component {
         } = this.props
         return (
             <div className="App">
-                <Router>
+                <Router basename="/dianping">
                     <Switch>
                         <Route path="/login" component={Login} />
                         <PrivateRoute path="/user" component={User} />

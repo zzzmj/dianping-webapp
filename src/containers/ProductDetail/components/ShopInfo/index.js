@@ -4,7 +4,7 @@ import './style.css'
 class ShopInfo extends Component {
     render() {
         const { name, address, phone, star } = this.props.data
-        const { total } = this.props.total
+        const { total } = this.props
         return (
             <div className="shopInfo">
                 <div className="shopInfo__header">
