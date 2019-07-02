@@ -2,7 +2,7 @@
   "name": "dianping-webapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "http://localhost:8000",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
